@@ -37,7 +37,7 @@
 
   "paths": 
   {
-    "/ws/postMessage.php": 
+    "/postMessage.php": 
     {
       "post": 
       {
@@ -129,7 +129,7 @@
       }
     },
   
-    "/ws/getAllMessages.php": 
+    "/getAllMessages.php": 
     {
       "get": 
       {
