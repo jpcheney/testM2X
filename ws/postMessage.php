@@ -34,7 +34,7 @@ $device->stream($streamId)->postValues(array(array('value' => $valeur,  'timesta
 		"apiKey" : "<?php echo $apiKey;?>",
 		"deviceId" : "<?php echo $deviceId;?>",
 		"streamId" : "<?php echo $streamId;?>",
-		"valeur" : "<?php echo $value;?>",
+		"valeur" : "<?php echo $valeur;?>",
 		"timestamp" : "<?php echo $now;?>"
 	}
 }
