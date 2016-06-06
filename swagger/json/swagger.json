@@ -1,0 +1,220 @@
+{
+  "swagger": "2.0",
+  "info": 
+  {
+    "title": "GTm",
+    "description": "API d'acces a M2X",
+    "version": "0.9",
+    "contact": 
+    {
+      "email": "jean-pierre.cheney@laposte.fr"
+    },
+
+    "license": 
+    {
+      "name": "La Poste/Privée",
+      "url": "http://nowhere.org"
+    }
+  },
+  "schemes": 
+  [
+    "http"
+  ],
+
+  "basePath": "/ws",
+  "tags": 
+  [
+    {
+      "name": "postMessage",
+      "description": "Web service de postage de message"
+    },
+
+    {
+      "name": "getAllMessages",
+      "description": "Web service de recuperation de tous les messages"
+    }
+  ],
+
+  "paths": 
+  {
+    "/postMessage.php": 
+    {
+      "post": 
+      {
+        "tags": 
+        [
+          "postMessage"
+        ],
+
+        "summary": "Envoi de message",
+        "description": "Web service d'envoi de message. Les données sont alors stockés sur ATT M2X.",
+        "produces": 
+        [
+          "application/json"
+        ],
+
+        "deprecated": false,
+        "parameters": 
+        [
+          {
+            "name": "apiKey",
+            "in": "formData",
+            "description": "Le clé api d'acces à M2X.",
+            "required": true,
+            "type": "string",
+            "default": "587f7006234b4059d15de39c98dd7a4a"
+          },
+		  {
+            "name": "deviceId",
+            "in": "formData",
+            "description": "L'id du device.",
+            "required": true,
+            "type": "string",
+            "default": "434b72300bad423cbaa295f7db30404c"
+          },
+		  {
+            "name": "streamId",
+            "in": "formData",
+            "description": "L'id du stream du device M2X.",
+            "required": true,
+            "type": "string",
+            "default": ""
+          },
+		  {
+            "name": "valeur",
+            "in": "formData",
+            "description": "La valeur à passer.",
+            "required": true,
+            "type": "string",
+            "default": ""
+          }
+        ],
+
+        "responses": 
+        {
+          "200": 
+          {
+            "description": "Resultat...",
+            "schema": 
+            {
+				"type": "object",
+				"properties": {
+					"code": {
+						"type": "string"
+					},
+					"libelle": {
+						"type": "string"
+					},
+					"valeurs": {
+						"type": "object",
+						"properties": {
+							"apiKey": {
+								"type" : "string"
+							},
+							"deviceId": {
+								"type" : "string"
+							},
+							"streamId": {
+								"type" : "string"
+							},
+							"valeur": {
+								"type" : "string"
+							}
+						}
+					}
+				}
+            }
+          }
+        }
+      }
+    },
+  
+    "/getAllMessages.php": 
+    {
+      "get": 
+      {
+        "tags": 
+        [
+          "getAllMessages"
+        ],
+
+        "summary": "Recuperation de tous les messages",
+        "description": "Web service de recuperation de tous les messages stockés sur ATT M2X pour le device et le stream donné.",
+        "produces": 
+        [
+          "application/json"
+        ],
+
+        "deprecated": false,
+        "parameters": 
+        [
+          {
+            "name": "apiKey",
+            "in": "query",
+            "description": "Le clé api d'acces à M2X.",
+            "required": true,
+            "type": "string",
+            "default": "587f7006234b4059d15de39c98dd7a4a"
+          },
+		  {
+            "name": "deviceId",
+            "in": "query",
+            "description": "L'id du device.",
+            "required": true,
+            "type": "string",
+            "default": "434b72300bad423cbaa295f7db30404c"
+          },
+		  {
+            "name": "streamId",
+            "in": "query",
+            "description": "L'id du stream du device M2X.",
+            "required": true,
+            "type": "string",
+            "default": ""
+          }
+        ],
+
+        "responses": 
+        {
+          "200": 
+          {
+            "description": "Resultat...",
+            "schema": 
+            {
+				"type": "object",
+				"properties": {
+					"code": {
+						"type": "string"
+					},
+					"libelle": {
+						"type": "string"
+					},
+					"values": {
+						"type": "object",
+						"properties": {
+							"value":{
+								"type": "array",
+								"items" :{
+									"type" : "object",
+									"properties": {
+										"timestamp": {
+											"type" : "string"
+										},
+										"valeur": {
+											"type" : "string"
+										}
+									}
+								}
+							}
+						}
+						
+					}
+				}
+            }
+          }
+        }
+      }
+    }
+  }
+ 
+}

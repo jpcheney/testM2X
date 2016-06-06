@@ -1,28 +1,71 @@
 <?php
-
-$apiKey = $_POST['apiKey'];
-$deviceId = $_POST['deviceId'];
-$streamId = $_POST['streamId'];
-$valeur = $_POST['valeur'];
-
 //chargement de la librairie via l'autoload de composer
 require_once "../vendor/autoload.php";
 
 //declaration des objets
 use Att\M2X\M2X;
 use Att\M2X\Error\M2XException;
+	
+$error=0;
+$msgError = "";
+if(isset($_POST['apiKey']) && !empty($_POST['apiKey'])){
+	$apiKey = $_POST['apiKey'];
+}else{
+	$error = 1;
+	if(!isset($_POST['apiKey'])){
+		$msgError = $msgError . "Il manque le parametre apiKey\n";
+	}else if(empty($_POST['apiKey'])){
+		$msgError = $msgError . "Le parametre apiKey est vide\n";
+	}
+}
 
-//instanciation de l'objet
-$m2x = new M2X($apiKey);
+if(isset($_POST['deviceId']) && !empty($_POST['deviceId'])){
+	$deviceId = $_POST['deviceId'];
+}else{
+	$error = 1;
+	if(!isset($_POST['deviceId'])){
+		$msgError = $msgError . "Il manque le parametre deviceId\n";
+	}else if(empty($_POST['deviceId'])){
+		$msgError = $msgError . "Le parametre deviceId est vide\n";
+	}
+}
 
-//Get the device
-$device = $m2x->device($deviceId);
+if(isset($_POST['streamId']) && !empty($_POST['streamId'])){
+	$streamId = $_POST['streamId'];
+}else{
+	$error = 1;
+	if(!isset($_POST['streamId'])){
+		$msgError = $msgError . "Il manque le parametre streamId\n";
+	}else if(empty($_POST['streamId'])){
+		$msgError = $msgError . "Le parametre streamId est vide\n";
+	}
+}
 
-//Create the streams if they don't exist yet
-$device->updateStream($streamId);
+if(isset($_POST['valeur']) && !empty($_POST['valeur'])){
+	$valeur = $_POST['valeur'];
+}else{
+	$error = 1;
+	if(!isset($_POST['valeur'])){
+		$msgError = $msgError . "Il manque le parametre valeur\n";
+	}else if(empty($_POST['valeur'])){
+		$msgError = $msgError . "Le parametre valeur est vide\n";
+	}
+}
 
-$now = date('c');
-$device->stream($streamId)->postValues(array(array('value' => $valeur,  'timestamp' => $now)));
+if($error==0){
+	
+
+	//instanciation de l'objet
+	$m2x = new M2X($apiKey);
+
+	//Get the device
+	$device = $m2x->device($deviceId);
+
+	//Create the streams if they don't exist yet
+	$device->updateStream($streamId);
+
+	$now = date('c');
+	$device->stream($streamId)->postValues(array(array('value' => $valeur,  'timestamp' => $now)));
 
 ?>
 {
@@ -39,15 +82,14 @@ $device->stream($streamId)->postValues(array(array('value' => $valeur,  'timesta
 	}
 }
 <?php
-/*
-$values = "";
-$values = $values . "apiKey=" . $apiKey . "\n";
-$values = $values . "deviceId=" . $deviceId . "\n";
-$values = $values . "streamId=" . $streamId . "\n";
-$values = $values . "valeur=" . $valeur . "\n";
-$values = $values . "\n\n";
-
-
-$retour = file_put_contents("resultPostMessage.txt",$values,FILE_APPEND);
-*/
+}else{
+?>
+{
+	"reponse" : {
+		"code" : "KO",
+		"libelle" : "<?php echo $msgError;?>"
+	}
+}
+<?php
+}
 ?>
