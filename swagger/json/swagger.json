@@ -64,7 +64,7 @@
             "description": "Le clé api d'acces à M2X.",
             "required": true,
             "type": "string",
-            "default": "07966069e262d4bd198568352c3a4318"
+            "default": "0cf6abec0e9ea8f4bd8f2d267bb2eacf"
           },
 		  {
             "name": "deviceId",
@@ -72,7 +72,7 @@
             "description": "L'id du device.",
             "required": true,
             "type": "string",
-            "default": "0cf6abec0e9ea8f4bd8f2d267bb2eacf"
+            "default": "07966069e262d4bd198568352c3a4318"
           },
 		  {
             "name": "streamId",
@@ -156,7 +156,7 @@
             "description": "Le clé api d'acces à M2X.",
             "required": true,
             "type": "string",
-            "default": "07966069e262d4bd198568352c3a4318"
+            "default": "0cf6abec0e9ea8f4bd8f2d267bb2eacf"
           },
 		  {
             "name": "deviceId",
@@ -164,7 +164,7 @@
             "description": "L'id du device.",
             "required": true,
             "type": "string",
-            "default": "0cf6abec0e9ea8f4bd8f2d267bb2eacf"
+            "default": "07966069e262d4bd198568352c3a4318"
           },
 		  {
             "name": "streamId",
