@@ -77,7 +77,7 @@
 		  {
             "name": "streamId",
             "in": "formData",
-            "description": "L'id du stream du device M2X.",
+            "description": "L'id du stream du device M2X. (on peut passer plusieurs streams, séparés par un ';')",
             "required": true,
             "type": "string",
             "default": ""
@@ -85,7 +85,7 @@
 		  {
             "name": "valeur",
             "in": "formData",
-            "description": "La valeur à passer.",
+            "description": "La valeur à passer.(on peut passer plusieurs valeurs, séparées par un ';'. Evidemment, le nombre de valeurs doit etre egale au nombre de streams...)",
             "required": true,
             "type": "string",
             "default": ""
@@ -108,19 +108,22 @@
 						"type": "string"
 					},
 					"valeurs": {
-						"type": "object",
-						"properties": {
-							"apiKey": {
-								"type" : "string"
-							},
-							"deviceId": {
-								"type" : "string"
-							},
-							"streamId": {
-								"type" : "string"
-							},
-							"valeur": {
-								"type" : "string"
+						"type": "array",
+						"items" :{
+							"type" : "object",
+							"properties": {
+								"apiKey": {
+									"type" : "string"
+								},
+								"deviceId": {
+									"type" : "string"
+								},
+								"streamId": {
+									"type" : "string"
+								},
+								"valeur": {
+									"type" : "string"
+								}
 							}
 						}
 					}

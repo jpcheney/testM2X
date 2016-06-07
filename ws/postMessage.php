@@ -30,6 +30,7 @@ if(isset($_POST['deviceId']) && !empty($_POST['deviceId'])){
 	}
 }
 
+$streamId = "";
 if(isset($_POST['streamId']) && !empty($_POST['streamId'])){
 	$streamId = $_POST['streamId'];
 }else{
@@ -41,6 +42,7 @@ if(isset($_POST['streamId']) && !empty($_POST['streamId'])){
 	}
 }
 
+$valeur = "";
 if(isset($_POST['valeur']) && !empty($_POST['valeur'])){
 	$valeur = $_POST['valeur'];
 }else{
@@ -52,9 +54,18 @@ if(isset($_POST['valeur']) && !empty($_POST['valeur'])){
 	}
 }
 
-if($error==0){
-	
+$streams=explode(";",$streamId);
+$valeurs=explode(";",$valeur);
 
+//test si le nombre de stream = le nombre de valeurs
+if(count($streams)!=count($valeurs)){
+	$error = 1;
+	$msgError = $msgError . "Incoherence entre les streamId et les valeurs (nombre different)\n";
+}
+
+$timestamps  = array();
+
+if($error==0){
 	//instanciation de l'objet
 	$m2x = new M2X($apiKey);
 
@@ -62,24 +73,37 @@ if($error==0){
 	$device = $m2x->device($deviceId);
 
 	//Create the streams if they don't exist yet
-	$device->updateStream($streamId);
+	for($i=0;$i<count($streams);$i=$i+1){
+		$device->updateStream($streams[$i]);
 
-	$now = date('c');
-	$device->stream($streamId)->postValues(array(array('value' => $valeur,  'timestamp' => $now)));
-
+		$now = date('c');
+		$timestamps[$i] = $now;
+		$device->stream($streams[$i])->postValues(array(array('value' => $valeurs[$i],  'timestamp' => $now)));
+	}
 ?>
 {
 	"reponse" : {
 		"code" : "OK",
 		"libelle" : "Tout s'est bien passe"
 	},
-	"valeurs": {
-		"apiKey" : "<?php echo $apiKey;?>",
-		"deviceId" : "<?php echo $deviceId;?>",
-		"streamId" : "<?php echo $streamId;?>",
-		"valeur" : "<?php echo $valeur;?>",
-		"timestamp" : "<?php echo $now;?>"
+	"valeurs": [
+<?php
+for($i=0;$i<count($streams);$i=$i+1){
+	if($i>0){
+		echo ",";
 	}
+?>
+		{
+			"apiKey" : "<?php echo $apiKey;?>",
+			"deviceId" : "<?php echo $deviceId;?>",
+			"streamId" : "<?php echo $streams[$i];?>",
+			"valeur" : "<?php echo $valeurs[$i];?>",
+			"timestamp" : "<?php echo $timestamps[$i];?>"
+		}
+<?php
+}
+?>
+	]
 }
 <?php
 }else{
