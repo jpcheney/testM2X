@@ -54,18 +54,19 @@ $result_set = $connection->query($sql);
 	$nb_lignes = 0;
 	while ($ligne = $result_set->fetch_assoc()) {
 		if($nb_lignes>0){
-			echo "	,\n";
+			echo "				,\n";
 		}
-		echo "			{\n";
-		echo "				\"cle_params\": \"".$ligne['cle_params']."\",\n";
-		echo "				\"libelle_params\": \"".$ligne['libelle_params']."\",\n";
-		echo "				\"valeur\": \"".$ligne['valeur']."\"\n";
-		echo "			}\n";
+		echo "				{\n";
+		echo "					\"cle_params\": \"".$ligne['cle_params']."\",\n";
+		echo "					\"libelle_params\": \"".$ligne['libelle_params']."\",\n";
+		echo "					\"valeur\": \"".$ligne['valeur']."\"\n";
+		echo "				}\n";
 		$nb_lignes = $nb_lignes + 1;
 	}
 ?>
 		
 			]
+		}
 <?php
 	$nb_rfid = $nb_rfid + 1;
 }

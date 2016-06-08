@@ -119,8 +119,8 @@ if(!isset($_POST['valeurs'])){
 	exit;
 }
 
-$cles_params = explode(";",$_POST['cles_params']);
-$valeurs = explode(";",$_POST['valeurs']);
+$cles_params = explode(";",trim($_POST['cles_params']));
+$valeurs = explode(";",trim($_POST['valeurs']));
 
 if(count($cles_params)!=count($valeurs)){
 ?>
@@ -134,8 +134,9 @@ if(count($cles_params)!=count($valeurs)){
 	exit;
 }
 
-$sql = "INSERT INTO rfid (id,nom_interne) values('".$id."','".$nom_interne."');";
-if (!$resultat = $connection->query($sql)) {
+if(strlen(trim($_POST['cles_params']))!=0 && strlen(trim($_POST['valeurs']))!=0){
+	$sql = "INSERT INTO rfid (id,nom_interne) values('".$id."','".$nom_interne."');";
+	if (!$resultat = $connection->query($sql)) {
 ?>
 {
 	"reponse" : {
@@ -147,9 +148,9 @@ if (!$resultat = $connection->query($sql)) {
 	exit;
 }
 
-for($i=0;$i<count($cles_params);$i=$i+1){
-	$sql = "INSERT INTO rfid_infos (id_rfid,cle_params,valeur) values('".$id."','".$cles_params[$i]."','".$valeurs[$i]."');";
-	if (!$resultat = $connection->query($sql)) {
+	for($i=0;$i<count($cles_params);$i=$i+1){
+		$sql = "INSERT INTO rfid_infos (id_rfid,cle_params,valeur) values('".$id."','".$cles_params[$i]."','".$valeurs[$i]."');";
+		if (!$resultat = $connection->query($sql)) {
 	?>
 	{
 		"reponse" : {
@@ -158,10 +159,10 @@ for($i=0;$i<count($cles_params);$i=$i+1){
 		}
 	}
 	<?php
-		exit;
+			exit;
+		}
 	}
 }
-
 
 
 $connection->close();
