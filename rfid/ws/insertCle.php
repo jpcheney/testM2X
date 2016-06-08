@@ -14,8 +14,8 @@ if ($connection->connect_errno) {
 }
 
 $cle= "";
-if(isset($_GET['cle'])){
-	$cle = $_GET['cle'];
+if(isset($_POST['cle'])){
+	$cle = $_POST['cle'];
 }else{
 ?>
 {
@@ -42,8 +42,8 @@ if(strlen($cle)==0){
 }
 
 $libelle= "";
-if(isset($_GET['libelle'])){
-	$libelle = $_GET['libelle'];
+if(isset($_POST['libelle'])){
+	$libelle = $_POST['libelle'];
 }else{
 ?>
 {
