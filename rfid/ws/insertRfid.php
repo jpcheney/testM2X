@@ -133,7 +133,7 @@ if(!isset($_POST['valeurs'])){
 }
 
 $cles_params = explode(";",$_POST['cles_params']);
-$valeurs = explode(";",$_POST['cles_params']);
+$valeurs = explode(";",$_POST['valeurs']);
 
 
 //test si le nombre de stream = le nombre de valeurs
