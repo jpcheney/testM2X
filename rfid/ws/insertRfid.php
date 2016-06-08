@@ -75,7 +75,7 @@ if (!$resultat = $connection->query($sql)) {
 {
 	"reponse" : {
 		"code" : "KO",
-		"libelle" : "<?php $connection->connect_errno;?>,<?php $connection->connect_error;?>"
+		"libelle" : "<?php echo $sql;?>,<?php $connection->connect_errno;?>,<?php $connection->connect_error;?>"
 	}
 }
 <?php
@@ -100,7 +100,7 @@ if (!$resultat = $connection->query($sql)) {
 {
 	"reponse" : {
 		"code" : "KO",
-		"libelle" : "<?php $connection->connect_errno;?>,<?php $connection->connect_error;?>"
+		"libelle" : "<?php echo $sql;?>,<?php $connection->connect_errno;?>,<?php $connection->connect_error;?>"
 	}
 }
 <?php
@@ -156,7 +156,7 @@ for($i=0;$i<count($cles_params);$i=$i+1){
 	{
 		"reponse" : {
 			"code" : "KO",
-			"libelle" : "<?php $connection->connect_errno;?>,<?php $connection->connect_error;?>"
+			"libelle" : "<?php echo $sql;?>,<?php $connection->connect_errno;?>,<?php $connection->connect_error;?>"
 		}
 	}
 	<?php

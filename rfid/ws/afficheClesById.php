@@ -48,7 +48,7 @@ if (!$result_set = $connection->query($sql)) {
 {
 	"reponse" : {
 		"code" : "KO",
-		"libelle" : "<?php $connection->connect_errno;?>,<?php $connection->connect_error;?>"
+		"libelle" : "<?php echo $sql;?>,<?php $connection->connect_errno;?>,<?php $connection->connect_error;?>"
 	}
 }
 <?php
@@ -75,7 +75,7 @@ if (!$result_set = $connection->query($sql)) {
 {
 	"reponse" : {
 		"code" : "KO",
-		"libelle" : "<?php $connection->connect_errno;?>,<?php $connection->connect_error;?>"
+		"libelle" : "<?php echo $sql;?>,<?php $connection->connect_errno;?>,<?php $connection->connect_error;?>"
 	}
 }
 <?php
