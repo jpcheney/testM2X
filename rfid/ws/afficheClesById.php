@@ -64,7 +64,7 @@ if ($ligneRfid = $result_set->fetch_assoc()) {
 		"code" : "OK",
 		"libelle" : "Retour ok"
 	},
-	"rfid : {
+	"rfid" : {
 		"id" : "<?php echo $ligneRfid['id'];?>",
 		"nom_interne" : "<?php echo $ligneRfid['nom_interne'];?>",
 		[
