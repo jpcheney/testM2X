@@ -1,4 +1,5 @@
 <?php
+header("Content-Type:text/plain");
 include_once('../conf/connection.php');
 
 if ($connection->connect_errno) {
@@ -94,20 +95,6 @@ if($result_set = $resultat->fetch_assoc()){
 	exit;
 }
 
-$sql = "INSERT INTO rfid (id,nom_interne) values('".$id."','".$nom_interne."');";
-if (!$resultat = $connection->query($sql)) {
-?>
-{
-	"reponse" : {
-		"code" : "KO",
-		"libelle" : "<?php echo $sql;?>,<?php $connection->connect_errno;?>,<?php $connection->connect_error;?>"
-	}
-}
-<?php
-	exit;
-}
-
-/**/
 if(!isset($_POST['cles_params'])){
 ?>
 {
@@ -135,14 +122,25 @@ if(!isset($_POST['valeurs'])){
 $cles_params = explode(";",$_POST['cles_params']);
 $valeurs = explode(";",$_POST['valeurs']);
 
-
-//test si le nombre de stream = le nombre de valeurs
 if(count($cles_params)!=count($valeurs)){
 ?>
 {
 	"reponse" : {
 		"code" : "KO",
 		"libelle" : "Incoherence entre les streamId et les valeurs (nombre different)"
+	}
+}
+<?php
+	exit;
+}
+
+$sql = "INSERT INTO rfid (id,nom_interne) values('".$id."','".$nom_interne."');";
+if (!$resultat = $connection->query($sql)) {
+?>
+{
+	"reponse" : {
+		"code" : "KO",
+		"libelle" : "<?php echo $sql;?>,<?php $connection->connect_errno;?>,<?php $connection->connect_error;?>"
 	}
 }
 <?php

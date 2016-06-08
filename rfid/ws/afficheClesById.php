@@ -1,4 +1,5 @@
 <?php
+header("Content-Type:text/plain");
 include_once('../conf/connection.php');
 
 if ($connection->connect_errno) {
