@@ -95,7 +95,7 @@ if($result_set = $resultat->fetch_assoc()){
 }
 
 $sql = "INSERT INTO params (cle,libelle) values('".$cle."','".$libelle."');";
-if ($connection->connect_errno) {
+if (!$resultat = $connection->query($sql)) {
 ?>
 {
 	"reponse" : {
