@@ -147,22 +147,22 @@ if (!$resultat = $connection->query($sql)) {
 <?php
 	exit;
 }
-if(strlen(trim($_POST['cles_params']))!=0 && strlen(trim($_POST['valeurs']))!=0){
-	for($i=0;$i<count($cles_params);$i=$i+1){
-		$sql = "INSERT INTO rfid_infos (id_rfid,cle_params,valeur) values('".$id."','".$cles_params[$i]."','".$valeurs[$i]."');";
-		if (!$resultat = $connection->query($sql)) {
-	?>
-	{
-		"reponse" : {
-			"code" : "KO",
-			"libelle" : "<?php echo $sql;?>,<?php $connection->connect_errno;?>,<?php $connection->connect_error;?>"
-		}
-	}
-	<?php
-			exit;
-		}
+
+for($i=0;$i<count($cles_params);$i=$i+1){
+	$sql = "INSERT INTO rfid_infos (id_rfid,cle_params,valeur) values('".$id."','".$cles_params[$i]."','".$valeurs[$i]."');";
+	if (!$resultat = $connection->query($sql)) {
+?>
+{
+	"reponse" : {
+		"code" : "KO",
+		"libelle" : "<?php echo $sql;?>,<?php $connection->connect_errno;?>,<?php $connection->connect_error;?>"
 	}
 }
+<?php
+		exit;
+	}
+}
+
 
 
 $connection->close();
