@@ -47,15 +47,4 @@ if (!$result = $connection->query($sql)) {
 }else{
 	echo "Creation table rfid_infos ok\n";
 }
-
-$sql = "drop table test;;";
-if (!$result = $connection->query($sql)) {
-	echo "Error: Our query failed to execute and here is why: \n";
-	echo "Query: " . $sql . "\n";
-	echo "Errno: " . $connection->errno . "\n";
-	echo "Error: " . $connection->error . "\n";
-	exit;
-}else{
-	echo "drop table test ok\n";
-}
 ?>
