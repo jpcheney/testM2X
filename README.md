@@ -15,6 +15,8 @@ Charge a ce fichier php de faire une action (ici, un simple log dans /test.txt)
 
 Le repertoire vendor, les fichiers composer.json et composer.lock sont la pour activer la librairie M2X (pour heroku entre autres)
 
-Repertoire /ws : les webservices (voir la doc swagger)
+Repertoire /ws : les webservices (voir la doc swagger) de la gestion des messages m2x
 
 Repertoire /swagger : la doc swagger
+
+Repertoire /rfid/ws : les webservices (voir la doc swagger) de la gestion des rfid
