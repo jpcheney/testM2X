@@ -21,25 +21,44 @@
     "http"
   ],
 
-  "basePath": "/ws",
-  "basePathLocal": "/testm2x/ws",
-  "basePathHeroku": "/ws",
+  "basePath": "/",
   "tags": 
   [
     {
       "name": "postMessage",
       "description": "Web service de postage de message"
-    },
-
+    }
+	,
     {
       "name": "getAllMessages",
       "description": "Web service de recuperation de tous les messages"
     }
+	,
+	{
+      "name": "insertCle",
+      "description": "Web service de creation de couple cle, libelle pour les infos a stocker de chaque rfid"
+    }
+	,
+	{
+      "name": "insertRfid",
+      "description": "Web service creation de rfid"
+    }
+	,
+	{
+      "name": "afficheCles",
+      "description": "Web service de recuperation des couples cle, libelle pour les infos a stocker de chaque rfid"
+    }
+	,
+	{
+      "name": "afficheClesByRfid",
+      "description": "Web service de recuperation des informations postees pour un rfid"
+    }
+	
   ],
 
   "paths": 
   {
-    "/postMessage.php": 
+    "/ws/postMessage.php": 
     {
       "post": 
       {
@@ -61,7 +80,7 @@
           {
             "name": "apiKey",
             "in": "formData",
-            "description": "Le clé api d'acces à M2X.",
+            "description": "La clé api d'acces à M2X.",
             "required": true,
             "type": "string",
             "default": "0cf6abec0e9ea8f4bd8f2d267bb2eacf"
@@ -91,7 +110,6 @@
             "default": ""
           }
         ],
-
         "responses": 
         {
           "200": 
@@ -132,9 +150,10 @@
           }
         }
       }
-    },
+    }
+	,
   
-    "/getAllMessages.php": 
+    "/ws/getAllMessages.php": 
     {
       "get": 
       {
@@ -178,7 +197,6 @@
             "default": ""
           }
         ],
-
         "responses": 
         {
           "200": 
@@ -220,6 +238,279 @@
         }
       }
     }
+	,
+	"/rfid/ws/insertCle.php": 
+    {
+      "post": 
+      {
+        "tags": 
+        [
+          "insertCle"
+        ],
+
+        "summary": "Envoi de couple cle - libelle",
+        "description": "Web service de couple cle - libelle, par exemple cle=NOM_PRODUIT et libelle=Nom du produit",
+        "produces": 
+        [
+          "application/json"
+        ],
+
+        "deprecated": false,
+        "parameters": 
+        [
+          {
+            "name": "cle",
+            "in": "formData",
+            "description": "La clé de la ligne de parametrage",
+            "required": true,
+            "type": "string",
+            "default": ""
+          },
+		  {
+            "name": "libelle",
+            "in": "formData",
+            "description": "Le libelle de la ligne de parametrage",
+            "required": true,
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": 
+        {
+          "200": 
+          {
+            "description": "Resultat...",
+            "schema": 
+            {
+				"type": "object",
+				"properties": {
+					"code": {
+						"type": "string"
+					},
+					"libelle": {
+						"type": "string"
+					}
+				}
+            }
+          }
+        }
+      }
+    }
+	,
+	"/rfid/ws/insertRfid.php": 
+    {
+      "post": 
+      {
+        "tags": 
+        [
+          "insertRfid"
+        ],
+
+        "summary": "Envoi de rfid avec des couple cle,valeur pour chaque parametre a stocker",
+        "description": "Web service de creation de rfid",
+        "produces": 
+        [
+          "application/json"
+        ],
+
+        "deprecated": false,
+        "parameters": 
+        [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "L'id du rfid",
+            "required": true,
+            "type": "string",
+            "default": ""
+          },
+		  {
+            "name": "nom_interne",
+            "in": "formData",
+            "description": "Un nom interne, a voir pour quoi l'utiliser...",
+            "required": true,
+            "type": "string",
+            "default": ""
+          },
+		  {
+            "name": "cles_params",
+            "in": "formData",
+            "description": "Les cles de parametrage a stocker (vide si pas de parametrage), separees par un ;",
+            "required": true,
+            "type": "string",
+            "default": ""
+          },
+		  {
+            "name": "valeurs",
+            "in": "formData",
+            "description": "Les valeurs de parametrage a stocker (vide si pas de parametrage), separees par un ;",
+            "required": true,
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": 
+        {
+          "200": 
+          {
+            "description": "Resultat...",
+            "schema": 
+            {
+				"type": "object",
+				"properties": {
+					"code": {
+						"type": "string"
+					},
+					"libelle": {
+						"type": "string"
+					}
+				}
+            }
+          }
+        }
+      }
+    }
+	,
+	
+	"/rfid/ws/afficheCles.php": 
+    {
+      "get": 
+      {
+        "tags": 
+        [
+          "afficheCles"
+        ],
+
+        "summary": "Recuperation de tous couples cle, libelle de parametrage",
+        "description": "Web service de recuperation de tous les couples de parametrage.",
+        "produces": 
+        [
+          "application/json"
+        ],
+
+        "deprecated": false,
+        "parameters": 
+        [
+          
+        ],
+        "responses": 
+        {
+          "200": 
+          {
+            "description": "Resultat...",
+            "schema": 
+            {
+				"type": "object",
+				"properties": {
+					"code": {
+						"type": "string"
+					},
+					"libelle": {
+						"type": "string"
+					},
+					"values": {
+						
+						"type": "array",
+						"items" :{
+							"type" : "object",
+							"properties": {
+								"cle": {
+									"type" : "string"
+								},
+								"libelle": {
+									"type" : "string"
+								}
+							}
+						}
+					}
+				}
+            }
+          }
+        }
+      }
+    }
+	,
+	"/ws/getAllMessages.php": 
+    {
+      "get": 
+      {
+        "tags": 
+        [
+          "afficheClesById"
+        ],
+
+        "summary": "Recuperation des informations postees pour un rfid",
+        "description": "Web service de recuperation des informations d'un rfid : nom_interne et tous les couples cle, libelle, valeur.",
+        "produces": 
+        [
+          "application/json"
+        ],
+
+        "deprecated": false,
+        "parameters": 
+        [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "L'id du rfid.",
+            "required": true,
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": 
+        {
+          "200": 
+          {
+            "description": "Resultat...",
+            "schema": 
+            {
+				"type": "object",
+				"properties": {
+					"code": {
+						"type": "string"
+					},
+					"libelle": {
+						"type": "string"
+					},
+					"rfid": {
+						"type": "object",
+						"properties": {
+							"id" :{
+								"type" : "string"
+							},
+							"nom_interne" :{
+								"type" : "string"
+							},
+							"fields":{
+								"type": "array",
+								"items" :{
+									"type" : "object",
+									"properties": {
+										"cle_params": {
+											"type" : "string"
+										},
+										"libelle_params": {
+											"type" : "string"
+										},
+										"valeur": {
+											"type" : "string"
+										}
+									}
+								}
+							}
+						}
+						
+					}
+				}
+            }
+          }
+        }
+      }
+    }
+	
+	
+	
   }
- 
+
 }
