@@ -14,8 +14,8 @@ if ($connection->connect_errno) {
 }
 
 $id= "";
-if(isset($_POST['id'])){
-	$id = $_POST['id'];
+if(isset($_GET['id'])){
+	$id = $_GET['id'];
 }else{
 ?>
 {
