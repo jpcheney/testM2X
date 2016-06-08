@@ -53,6 +53,11 @@
       "name": "afficheClesById",
       "description": "Web service de recuperation d'un rfid"
     }
+	,
+	{
+      "name": "afficheAllRfid",
+      "description": "Web service de recuperation de tous les rfid"
+    }
 	
   ],
 
@@ -501,6 +506,78 @@
 							}
 						}
 						
+					}
+				}
+            }
+          }
+        }
+      }
+    }
+	,"/rfid/ws/afficheAllRfid.php": 
+    {
+      "get": 
+      {
+        "tags": 
+        [
+          "afficheAllRfid"
+        ],
+
+        "summary": "Recuperation de tous les rfid",
+        "description": "Web service de recuperation de tous les rfid, y compris les informations nom_interne et tous les couples cle, libelle, valeur.",
+        "produces": 
+        [
+          "application/json"
+        ],
+
+        "deprecated": false,
+        "parameters": 
+        [
+        ],
+        "responses": 
+        {
+          "200": 
+          {
+            "description": "Resultat...",
+            "schema": 
+            {
+				"type": "object",
+				"properties": {
+					"code": {
+						"type": "string"
+					},
+					"libelle": {
+						"type": "string"
+					},
+					"rfid": {
+						"type": "array",
+						"items" :{
+							"type" : "object",
+							"properties": {
+								"id" :{
+									"type" : "string"
+								},
+								"nom_interne" :{
+									"type" : "string"
+								},
+								"fields":{
+									"type": "array",
+									"items" :{
+										"type" : "object",
+										"properties": {
+											"cle_params": {
+												"type" : "string"
+											},
+											"libelle_params": {
+												"type" : "string"
+											},
+											"valeur": {
+												"type" : "string"
+											}
+										}
+									}
+								}
+							}
+						}
 					}
 				}
             }
