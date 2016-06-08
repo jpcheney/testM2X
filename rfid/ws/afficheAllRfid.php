@@ -38,7 +38,7 @@ if (!$result_set = $connection->query($sql)) {
 $nb_rfid=0;
 while ($ligneRfid = $result_set->fetch_assoc()) {
 	if($nb_rfid>0){
-		echo "		,";
+		echo "		,\n";
 	}
 	$id = $ligneRfid['id'];
 
