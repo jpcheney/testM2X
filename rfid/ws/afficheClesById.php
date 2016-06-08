@@ -41,7 +41,7 @@ if(strlen($id)==0){
 	exit;
 }
 
-$sql = "select id,nom_interne from rfid where id='"+$id+";";
+$sql = "select id,nom_interne from rfid where id='".$id.";";
 
 if (!$result_set = $connection->query($sql)) {
 ?>
@@ -69,7 +69,7 @@ if ($ligneRfid = $result_set->fetch_assoc()) {
 		"nom_interne" : "<?php echo $ligneRfid['nom_interne'];?>",
 		[
 <?
-$sql = "select rfid_infos.cle_params as cle_params,params.libelle as libelle_params,rfid_infos.valeur as valeur from rfid_infos,params where rfid_infos.id_rfid='"+$id+" and params.cle = rfid_infos.cle_params;";
+$sql = "select rfid_infos.cle_params as cle_params,params.libelle as libelle_params,rfid_infos.valeur as valeur from rfid_infos,params where rfid_infos.id_rfid='".$id." and params.cle = rfid_infos.cle_params;";
 if (!$result_set = $connection->query($sql)) {
 ?>
 {
