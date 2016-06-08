@@ -34,9 +34,10 @@ if (!$result = $connection->query($sql)) {
 }
 
 $sql = "CREATE TABLE IF NOT EXISTS rfid_infos (".
-	"id_rfid varchar(50) NOT NULL PRIMARY KEY,".
-	"cle_params varchar(50) NOT NULL PRIMARY KEY,".
-	"valeur varchar(255) NOT NULL);";
+	"id_rfid varchar(50) NOT NULL,".
+	"cle_params varchar(50) NOT NULL,".
+	"valeur varchar(255) NOT NULL,".
+	"PRIMARY KEY (id_rfid,cle_params));";
 if (!$result = $connection->query($sql)) {
 	echo "Error: Our query failed to execute and here is why: \n";
 	echo "Query: " . $sql . "\n";
@@ -46,5 +47,15 @@ if (!$result = $connection->query($sql)) {
 }else{
 	echo "Creation table rfid_infos ok\n";
 }
-	
+
+$sql = "drop table test;;";
+if (!$result = $connection->query($sql)) {
+	echo "Error: Our query failed to execute and here is why: \n";
+	echo "Query: " . $sql . "\n";
+	echo "Errno: " . $connection->errno . "\n";
+	echo "Error: " . $connection->error . "\n";
+	exit;
+}else{
+	echo "drop table test ok\n";
+}
 ?>
