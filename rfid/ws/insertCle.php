@@ -113,6 +113,6 @@ $connection->close();
 {
 	"reponse" : {
 		"code" : "OK",
-		"libelle" : "Insertion parametre Voici les parametres utilisables"
+		"libelle" : "Insertion parametre <?php echo $cle;?> = <?php echo $libelle;?> ok"
 	}
 }
