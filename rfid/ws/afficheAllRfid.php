@@ -14,7 +14,7 @@ if ($connection->connect_errno) {
 	exit;
 }
 
-$sql = "select id,nom_interne from rfid where id='".$id."';";
+$sql = "select id,nom_interne from rfid;";
 
 if (!$result_set = $connection->query($sql)) {
 ?>
