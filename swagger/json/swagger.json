@@ -341,7 +341,7 @@
             "name": "cles_params",
             "in": "formData",
             "description": "Les cles de parametrage a stocker (vide si pas de parametrage), separees par un ;",
-            "required": true,
+            "required": false,
             "type": "string",
             "default": ""
           },
@@ -349,7 +349,7 @@
             "name": "valeurs",
             "in": "formData",
             "description": "Les valeurs de parametrage a stocker (vide si pas de parametrage), separees par un ;",
-            "required": true,
+            "required": false,
             "type": "string",
             "default": ""
           }
