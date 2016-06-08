@@ -36,7 +36,7 @@
 	,
 	{
       "name": "insertCle",
-      "description": "Web service de creation de couple cle, libelle pour les infos a stocker de chaque rfid"
+      "description": "Web service de creation de couple cle"
     }
 	,
 	{
@@ -46,12 +46,12 @@
 	,
 	{
       "name": "afficheCles",
-      "description": "Web service de recuperation des couples cle, libelle pour les infos a stocker de chaque rfid"
+      "description": "Web service d'affichage du parametrage"
     }
 	,
 	{
-      "name": "afficheClesByRfid",
-      "description": "Web service de recuperation des informations postees pour un rfid"
+      "name": "afficheClesById",
+      "description": "Web service de recuperation d'un rfid"
     }
 	
   ],
@@ -430,7 +430,7 @@
       }
     }
 	,
-	"/ws/afficheClesById.php": 
+	"/rfid/ws/afficheClesById.php": 
     {
       "get": 
       {
