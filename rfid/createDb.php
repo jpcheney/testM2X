@@ -19,7 +19,7 @@ if ($connection->connect_errno) {
     exit;
 }
 
-$sql = "CREATE TABLE IF NOT EXISTS test ".
+$sql = "CREATE TABLE IF NOT EXISTS test (".
 	"id int(11) NOT NULL,".
 	"libelle varchar(50) NOT NULL)";
 
