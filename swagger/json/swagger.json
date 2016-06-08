@@ -430,7 +430,7 @@
       }
     }
 	,
-	"/ws/getAllMessages.php": 
+	"/ws/afficheClesById.php": 
     {
       "get": 
       {
