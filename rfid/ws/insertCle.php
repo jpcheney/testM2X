@@ -107,7 +107,6 @@ if (!$resultat = $connection->query($sql)) {
 	exit;
 }
 
-$resultat->free();
 $connection->close();
 ?>
 {

@@ -47,4 +47,37 @@ if (!$result = $connection->query($sql)) {
 }else{
 	echo "Creation table rfid_infos ok\n";
 }
+
+$sql = "DELETE FROM params;";
+if (!$result = $connection->query($sql)) {
+	echo "Error: Our query failed to execute and here is why: \n";
+	echo "Query: " . $sql . "\n";
+	echo "Errno: " . $connection->errno . "\n";
+	echo "Error: " . $connection->error . "\n";
+	exit;
+}else{
+	echo "Delete table params ok\n";
+}
+
+$sql = "DELETE FROM rfid;";
+if (!$result = $connection->query($sql)) {
+	echo "Error: Our query failed to execute and here is why: \n";
+	echo "Query: " . $sql . "\n";
+	echo "Errno: " . $connection->errno . "\n";
+	echo "Error: " . $connection->error . "\n";
+	exit;
+}else{
+	echo "Delete table rfid ok\n";
+}
+
+$sql = "DELETE FROM rfid_infos;";
+if (!$result = $connection->query($sql)) {
+	echo "Error: Our query failed to execute and here is why: \n";
+	echo "Query: " . $sql . "\n";
+	echo "Errno: " . $connection->errno . "\n";
+	echo "Error: " . $connection->error . "\n";
+	exit;
+}else{
+	echo "Delete table rfid_infos ok\n";
+}
 ?>
