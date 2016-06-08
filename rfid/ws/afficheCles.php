@@ -36,7 +36,7 @@ if (!$result_set = $connection->query($sql)) {
 	"values" : [
 <?
 $nb_lignes = 0;
-while ($resultat = $result_set->fetch_assoc()) {
+while ($ligne = $result_set->fetch_assoc()) {
 	if($nb_lignes>0){
 		echo "	,\n";
 	}

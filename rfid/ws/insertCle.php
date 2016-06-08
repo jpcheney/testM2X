@@ -21,7 +21,20 @@ if(isset($_GET['cle'])){
 {
 	"reponse" : {
 		"code" : "KO",
-		"libelle" : "Il manque le parametre cle;"
+		"libelle" : "Il manque le parametre cle"
+	}
+}
+<?php
+	exit;
+}
+
+
+if(strlen($cle)==0){
+?>
+{
+	"reponse" : {
+		"code" : "KO",
+		"libelle" : "Le parametre cle est vide"
 	}
 }
 <?php
@@ -36,7 +49,19 @@ if(isset($_GET['libelle'])){
 {
 	"reponse" : {
 		"code" : "KO",
-		"libelle" : "Il manque le parametre libelle;"
+		"libelle" : "Il manque le parametre libelle"
+	}
+}
+<?php
+	exit;
+}
+
+if(strlen($libelle)==0){
+?>
+{
+	"reponse" : {
+		"code" : "KO",
+		"libelle" : "Le parametre libelle est vide"
 	}
 }
 <?php
@@ -45,7 +70,7 @@ if(isset($_GET['libelle'])){
 
 $sql = "select cle,libelle from params where cle='".$cle."';";
 
-if (!$result_set = $connection->query($sql)) {
+if (!$resultat = $connection->query($sql)) {
 ?>
 {
 	"reponse" : {
@@ -57,7 +82,7 @@ if (!$result_set = $connection->query($sql)) {
 	exit;
 }
 
-if($resultat = $result_set->fetch_assoc()){
+if($result_set = $resultat->fetch_assoc()){
 ?>
 {
 	"reponse" : {
@@ -70,7 +95,7 @@ if($resultat = $result_set->fetch_assoc()){
 }
 
 $sql = "INSERT INTO params (cle,libelle) values('".$cle."','".$libelle."');";
-if (!$result_set = $connection->query($sql)) {
+if ($connection->connect_errno) {
 ?>
 {
 	"reponse" : {
@@ -82,7 +107,7 @@ if (!$result_set = $connection->query($sql)) {
 	exit;
 }
 
-$result->free();
+$resultat->free();
 $connection->close();
 ?>
 {
