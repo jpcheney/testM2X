@@ -49,10 +49,10 @@ while ($ligneRfid = $result_set->fetch_assoc()) {
 			"fields" : [
 <?
 $sql = "select rfid_infos.cle_params as cle_params,params.libelle as libelle_params,rfid_infos.valeur as valeur from rfid_infos,params where rfid_infos.id_rfid='".$id."' and params.cle = rfid_infos.cle_params;";
-$result_set = $connection->query($sql);
+$result_set_rfid = $connection->query($sql);
 
 	$nb_lignes = 0;
-	while ($ligne = $result_set->fetch_assoc()) {
+	while ($ligne = $result_set_rfid->fetch_assoc()) {
 		if($nb_lignes>0){
 			echo "				,\n";
 		}
