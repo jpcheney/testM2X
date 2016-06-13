@@ -25,7 +25,7 @@ if (!$result_set = $connection->query($sql)) {
 	}
 }
 <?php
-	exit;
+	
 }
 
 ?>
@@ -35,7 +35,7 @@ if (!$result_set = $connection->query($sql)) {
 		"libelle" : "Voici les parametres utilisables"
 	},
 	"values" : [
-<?
+<?php
 $nb_lignes = 0;
 while ($ligne = $result_set->fetch_assoc()) {
 	if($nb_lignes>0){
@@ -51,6 +51,6 @@ while ($ligne = $result_set->fetch_assoc()) {
 	]
 }
 <?php
-$result->free();
+
 $connection->close();
 ?>

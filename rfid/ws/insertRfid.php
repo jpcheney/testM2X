@@ -69,6 +69,19 @@ if(strlen($nom_interne)==0){
 	exit;
 }
 
+/**/
+/*
+echo $id."\n";
+echo $nom_interne."\n";
+echo $_POST['cles_params']."\n";
+echo $_POST['valeurs']."\n";
+echo $_POST['affiche_emetteur']."\n";
+echo $_POST['affiche_client']."\n";
+
+exit;
+*/
+/**/
+
 $sql = "select id,nom_interne from rfid where id='".$id."';";
 
 if (!$resultat = $connection->query($sql)) {
@@ -121,21 +134,50 @@ if(!isset($_POST['valeurs'])){
 
 $cles_params = explode(";",trim($_POST['cles_params']));
 $valeurs = explode(";",trim($_POST['valeurs']));
+$affiche_emetteur = explode(";",trim($_POST['affiche_emetteur']));
+$affiche_client = explode(";",trim($_POST['affiche_client']));
 
-if(count($cles_params)!=count($valeurs)){
+if(count($cles_params)!=count($valeurs) || count($cles_params)!=count($affiche_emetteur) || count($cles_params)!=count($affiche_client)){
 ?>
 {
 	"reponse" : {
 		"code" : "KO",
-		"libelle" : "Incoherence entre les streamId et les valeurs (nombre different)"
+		"libelle" : "Incoherence entre les streamId et les valeurs ou les affichage emetteur ou client (nombre different)"
 	}
 }
 <?php
 	exit;
 }
 
+for($i=0;$i<count($affiche_emetteur);$i=$i+1){
+	if($affiche_emetteur[$i]!=0 && $affiche_emetteur[$i]!=1){
+?>
+{
+	"reponse" : {
+		"code" : "KO",
+		"libelle" : "Les valeurs de affiche_emetteur doivent etre de 0 ou 1"
+	}
+}
+<?php
+		exit;
+	}
+}
 
-$sql = "INSERT INTO rfid (id,nom_interne) values('".$id."','".$nom_interne."');";
+for($i=0;$i<count($affiche_client);$i=$i+1){
+	if($affiche_client[$i]!=0 && $affiche_client[$i]!=1){
+?>
+{
+	"reponse" : {
+		"code" : "KO",
+		"libelle" : "Les valeurs de affiche_client doivent etre de 0 ou 1"
+	}
+}
+<?php
+		exit;
+	}
+}
+
+$sql = "INSERT INTO rfid (id,nom_interne,date_creation) values('".$id."','".$nom_interne."',NOW());";
 if (!$resultat = $connection->query($sql)) {
 ?>
 {
@@ -149,7 +191,7 @@ if (!$resultat = $connection->query($sql)) {
 }
 
 for($i=0;$i<count($cles_params);$i=$i+1){
-	$sql = "INSERT INTO rfid_infos (id_rfid,cle_params,valeur) values('".$id."','".$cles_params[$i]."','".$valeurs[$i]."');";
+	$sql = "INSERT INTO rfid_infos (id_rfid,cle_params,valeur,affichage_emetteur,affichage_recepteur) values('".$id."','".$cles_params[$i]."','".$valeurs[$i]."',".$affiche_emetteur[$i].",".$affiche_client[$i].");";
 	if (!$resultat = $connection->query($sql)) {
 ?>
 {
@@ -163,13 +205,11 @@ for($i=0;$i<count($cles_params);$i=$i+1){
 	}
 }
 
-
-
 $connection->close();
 ?>
 {
 	"reponse" : {
 		"code" : "OK",
-		"libelle" : "Insertion Rfid <?php echo $cle;?> = <?php echo $libelle;?> ok"
+		"libelle" : "Insertion Rfid <?php echo $id;?> ok"
 	}
 }

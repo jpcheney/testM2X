@@ -29,6 +29,15 @@ if(isset($_GET['id'])){
 	exit;
 }
 
+$affiche_emetteur = -1;
+if(isset($_GET['affiche_emetteur'])){
+	$affiche_emetteur = $_GET['affiche_emetteur'];
+}
+
+$affiche_client = -1;
+if(isset($_GET['affiche_client'])){
+	$affiche_client = $_GET['affiche_client'];
+}
 
 if(strlen($id)==0){
 ?>
@@ -57,8 +66,6 @@ if (!$result_set = $connection->query($sql)) {
 }
 if ($ligneRfid = $result_set->fetch_assoc()) {
 	
-
-
 ?>
 {
 	"reponse" : {
@@ -69,31 +76,29 @@ if ($ligneRfid = $result_set->fetch_assoc()) {
 		"id" : "<?php echo $ligneRfid['id'];?>",
 		"nom_interne" : "<?php echo $ligneRfid['nom_interne'];?>",
 		"fields" : [
-<?
-$sql = "select rfid_infos.cle_params as cle_params,params.libelle as libelle_params,rfid_infos.valeur as valeur from rfid_infos,params where rfid_infos.id_rfid='".$id."' and params.cle = rfid_infos.cle_params;";
-if (!$result_set = $connection->query($sql)) {
-?>
-{
-	"reponse" : {
-		"code" : "KO",
-		"libelle" : "<?php echo $sql;?>,<?php $connection->connect_errno;?>,<?php $connection->connect_error;?>"
-	}
-}
 <?php
-	exit;
-}
-$nb_lignes = 0;
-while ($ligne = $result_set->fetch_assoc()) {
-	if($nb_lignes>0){
-		echo "			,\n";
+	$sql = "select rfid_infos.cle_params as cle_params,params.libelle as libelle_params,rfid_infos.valeur as valeur from rfid_infos,params where rfid_infos.id_rfid='".$id."' and params.cle = rfid_infos.cle_params";
+	if($affiche_emetteur>-1){
+		$sql = $sql . " AND affichage_emetteur=".$affiche_emetteur;
 	}
-	echo "			{\n";
-    echo "				\"cle_params\": \"".$ligne['cle_params']."\",\n";
-	echo "				\"libelle_params\": \"".$ligne['libelle_params']."\",\n";
-	echo "				\"valeur\": \"".$ligne['valeur']."\"\n";
-	echo "			}\n";
-	$nb_lignes = $nb_lignes + 1;
-}
+	if($affiche_client>-1){
+		$sql = $sql . " AND affichage_recepteur=".$affiche_client;
+	}
+	$sql = $sql . ";";
+	$result_set = $connection->query($sql);
+
+	$nb_lignes = 0;
+	while ($ligne = $result_set->fetch_assoc()) {
+		if($nb_lignes>0){
+			echo "			,\n";
+		}
+		echo "			{\n";
+		echo "				\"cle_params\": \"".$ligne['cle_params']."\",\n";
+		echo "				\"libelle_params\": \"".$ligne['libelle_params']."\",\n";
+		echo "				\"valeur\": \"".$ligne['valeur']."\"\n";
+		echo "			}\n";
+		$nb_lignes = $nb_lignes + 1;
+	}
 ?>
 		]
 	}
@@ -109,6 +114,6 @@ while ($ligne = $result_set->fetch_assoc()) {
 }
 <?php
 }
-$result->free();
+
 $connection->close();
 ?>
