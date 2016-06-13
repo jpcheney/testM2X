@@ -352,6 +352,22 @@
             "required": true,
             "type": "string",
             "default": ""
+          },
+		  {
+            "name": "affiche_emetteur",
+            "in": "formData",
+            "description": "Si on veut afficher ce parametre coté emetteur, on met 1 sinon 0), separees par un ;",
+            "required": true,
+            "type": "string",
+            "default": ""
+          },
+		  {
+            "name": "affiche_client",
+            "in": "formData",
+            "description": "Si on veut afficher ce parametre coté client (recepteur), on met 1 sinon 0), separees par un ;",
+            "required": true,
+            "type": "string",
+            "default": ""
           }
         ],
         "responses": 
@@ -460,6 +476,22 @@
             "description": "L'id du rfid.",
             "required": true,
             "type": "string",
+            "default": ""
+          },
+		  {
+            "name": "affiche_emetteur",
+            "in": "query",
+            "description": "Filtrage pour l'emetteur (afficher que les parametres emetteurs, 0 ou 1)...",
+            "required": false,
+            "type": "integer",
+            "default": ""
+          },
+		  {
+            "name": "affiche_client",
+            "in": "query",
+            "description": "Filtrage pour le client (afficher que les parametres clients, 0 ou 1)...",
+            "required": false,
+            "type": "integer",
             "default": ""
           }
         ],
@@ -572,6 +604,12 @@
 											},
 											"valeur": {
 												"type" : "string"
+											},
+											"affiche_emetteur": {
+												"type" : "integer"
+											},
+											"affiche_client": {
+												"type" : "integer"
 											}
 										}
 									}
