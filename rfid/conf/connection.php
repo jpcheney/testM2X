@@ -8,10 +8,10 @@ if(getenv("CLEARDB_DATABASE_URL")!=""){
 	$password = $url["pass"];
 	$db = substr($url["path"], 1);
 
-	echo $server."<br/>\n"
-	echo $username."<br/>\n"
-	echo $username."<br/>\n"
-	echo $db."<br/>\n"
+	echo $server."<br/>\n";
+	echo $username."<br/>\n";
+	echo $username."<br/>\n";
+	echo $db."<br/>\n";
 }else{
 	$server = "127.0.0.1";
 	$username = "testm2x";
