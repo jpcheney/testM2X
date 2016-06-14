@@ -69,19 +69,13 @@ if (!$result = $connection->query($sql)) {
 	echo "Insert default table params ok\n";
 }
 
-INSERT INTO `params` (`cle`, `libelle`) VALUES
-('NOM_CLIENT', 'Nom du client'),
-('NOM_PRODUIT', 'Nom du produit'),
-('REF_PRODUIT', 'Reference du produit'),
-('URL_MANUEL', 'Adresse du manuel');
-
-
 $sql = "CREATE TABLE IF NOT EXISTS rfid (".
-	"id varchar(50) NOT NULL PRIMARY KEY,".
-	"nom_interne varchar(255) NOT NULL".
+	"id varchar(50) NOT NULL,".
+  	"nom_interne varchar(255) NOT NULL,".
 	"date_creation datetime NOT NULL,".
 	"date_reception datetime NOT NULL,".
-	"date_lecture_notification datetime NOT NULL".
+	"date_lecture_notification datetime NOT NULL,".
+	"id_device varchar(255) NOT NULL".
 	") ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 if (!$result = $connection->query($sql)) {
 	echo "Error: Our query failed to execute and here is why: \n";

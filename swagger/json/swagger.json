@@ -21,7 +21,7 @@
     "http"
   ],
 
-  "basePath": "/",
+  "basePath": "/testm2x/",
   "tags": 
   [
     {
@@ -42,6 +42,16 @@
 	{
       "name": "insertRfid",
       "description": "Web service creation de rfid"
+    }
+	,
+	{
+      "name": "updateRfidDateLectureNotification",
+      "description": "Web service d'update de rfid (date de lecture de la notification)"
+    }
+	,
+	{
+      "name": "updateRfidDateReception",
+      "description": "Web service d'update de rfid (date de reception)"
     }
 	,
 	{
@@ -392,6 +402,113 @@
       }
     }
 	,
+	"/rfid/ws/updateRfidDateReception.php": 
+    {
+      "post": 
+      {
+        "tags": 
+        [
+          "updateRfidDateReception"
+        ],
+
+        "summary": "Update de la date de reception",
+        "description": "Mise a jour de la date de reception du rfid",
+        "produces": 
+        [
+          "application/json"
+        ],
+
+        "deprecated": false,
+        "parameters": 
+        [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "L'id du rfid",
+            "required": true,
+            "type": "string",
+            "default": ""
+          }
+		  ,
+		  {
+            "name": "id_device",
+            "in": "formData",
+            "description": "L'id du device (la BLI)",
+            "required": true,
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": 
+        {
+          "200": 
+          {
+            "description": "Resultat...",
+            "schema": 
+            {
+				"type": "object",
+				"properties": {
+					"code": {
+						"type": "string"
+					},
+					"libelle": {
+						"type": "string"
+					}
+				}
+            }
+          }
+        }
+      }
+    }
+	,
+	"/rfid/ws/updateRfidDateLectureNotification.php": 
+    {
+      "post": 
+      {
+        "tags": 
+        [
+          "updateRfidDateLectureNotification"
+        ],
+        "summary": "Update de la date de lecture de notification",
+        "description": "Mise a jour de la date de lecture de notification du rfid",
+        "produces": 
+        [
+          "application/json"
+        ],
+        "deprecated": false,
+        "parameters": 
+        [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "L'id du rfid",
+            "required": true,
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": 
+        {
+          "200": 
+          {
+            "description": "Resultat...",
+            "schema": 
+            {
+				"type": "object",
+				"properties": {
+					"code": {
+						"type": "string"
+					},
+					"libelle": {
+						"type": "string"
+					}
+				}
+            }
+          }
+        }
+      }
+    }
+	,
 	
 	"/rfid/ws/afficheCles.php": 
     {
@@ -519,6 +636,18 @@
 							"nom_interne" :{
 								"type" : "string"
 							},
+							"date_creation" :{
+								"type" : "string"
+							},
+							"date_reception" :{
+								"type" : "string"
+							},
+							"date_lecture_notification" :{
+								"type" : "string"
+							},
+							"id_device" :{
+								"type" : "string"
+							},
 							"fields":{
 								"type": "array",
 								"items" :{
@@ -589,6 +718,18 @@
 									"type" : "string"
 								},
 								"nom_interne" :{
+									"type" : "string"
+								},
+								"date_creation" :{
+									"type" : "string"
+								},
+								"date_reception" :{
+									"type" : "string"
+								},
+								"date_lecture_notification" :{
+									"type" : "string"
+								},
+								"id_device" :{
 									"type" : "string"
 								},
 								"fields":{
