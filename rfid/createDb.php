@@ -8,7 +8,7 @@ if ($connection->connect_errno) {
     echo "Error: " . $connection->connect_error . "\n";
 }
 
-$sql = "DROP TABLE rfid_infos;";
+$sql = "DROP TABLE IF EXISTS rfid_infos;";
 if (!$result = $connection->query($sql)) {
 	echo "Error: Our query failed to execute and here is why: \n";
 	echo "Query: " . $sql . "\n";
@@ -19,7 +19,7 @@ if (!$result = $connection->query($sql)) {
 	echo "Drop table rfid_infos ok\n";
 }
 
-$sql = "DROP TABLE rfid;";
+$sql = "DROP TABLE IF EXISTS rfid;";
 if (!$result = $connection->query($sql)) {
 	echo "Error: Our query failed to execute and here is why: \n";
 	echo "Query: " . $sql . "\n";
@@ -30,7 +30,7 @@ if (!$result = $connection->query($sql)) {
 	echo "Drop table rfid ok\n";
 }
 
-$sql = "DROP TABLE params;";
+$sql = "DROP TABLE IF EXISTS params;";
 if (!$result = $connection->query($sql)) {
 	echo "Error: Our query failed to execute and here is why: \n";
 	echo "Query: " . $sql . "\n";
