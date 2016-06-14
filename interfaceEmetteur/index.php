@@ -115,10 +115,9 @@ function valider(){
 	}
 
 	var xhr = new XMLHttpRequest();
-	xhr.open( "POST", "../rfid/ws/insertRfid.php",  true);
+	xhr.open( "POST", "../rfid/ws/insertRfid.php",  false);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhr.send("id="+rfid+"&nom_interne="+nom_interne+"&cles_params="+cle_string+"&valeurs="+valeur_string+"&affiche_emetteur="+affiche_emetteur+"&affiche_client="+affiche_client_string);
-	
+	xhr.send("id="+rfid+"&nom_interne="+nom_interne+"&cles_params="+cle_string+"&valeurs="+valeur_string+"&affiche_emetteur="+affiche_emetteur_string+"&affiche_client="+affiche_client_string);
 	//debug
 	/*
 	window.document.realFormulaire.id.value = rfid;
@@ -180,7 +179,7 @@ function refreshListe(){
 			}
 		}
 	};
-	xhr.open( "GET", "../rfid/ws/afficheAllRfid.php?affiche_emetteur=1",  false);
+	xhr.open( "GET", "../rfid/ws/afficheAllRfid.php",  false);
 	xhr.send(null);
 }
 		</script>
@@ -202,7 +201,6 @@ function refreshListe(){
 			<input type="hidden" name="valeurs">
 			<input type="hidden" name="affiche_emetteur">
 			<input type="hidden" name="affiche_client">
-			
 		</form>
 	</body>
 </html>
