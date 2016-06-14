@@ -70,7 +70,7 @@ if (!$result = $connection->query($sql)) {
 }
 
 $sql = "CREATE TABLE IF NOT EXISTS rfid (".
-	"id varchar(50) NOT NULL,".
+	"id varchar(50) NOT NULL PRIMARY KEY,".
   	"nom_interne varchar(255) NOT NULL,".
 	"date_creation datetime NOT NULL,".
 	"date_reception datetime NOT NULL,".
@@ -92,7 +92,7 @@ $sql = "CREATE TABLE IF NOT EXISTS rfid_infos (".
 	"cle_params varchar(50) NOT NULL,".
 	"valeur varchar(255) NOT NULL,".
 	"affichage_emetteur int(11) DEFAULT NULL,".
-	"affichage_recepteur int(11) DEFAULT NULL".
+	"affichage_recepteur int(11) DEFAULT NULL,".
 	"PRIMARY KEY (id_rfid,cle_params)) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 if (!$result = $connection->query($sql)) {
 	echo "Error: Our query failed to execute and here is why: \n";
