@@ -60,7 +60,12 @@
     }
 	,
 	{
-      "name": "afficheClesById",
+      "name": "afficheRfidById",
+      "description": "Web service de recuperation d'un rfid"
+    }
+	,
+	{
+      "name": "afficheRfidByIdDevice",
       "description": "Web service de recuperation d'un rfid"
     }
 	,
@@ -568,13 +573,13 @@
       }
     }
 	,
-	"/rfid/ws/afficheClesById.php": 
+	"/rfid/ws/afficheRfidById.php": 
     {
       "get": 
       {
         "tags": 
         [
-          "afficheClesById"
+          "afficheRfidById"
         ],
 
         "summary": "Recuperation des informations postees pour un rfid",
@@ -674,7 +679,123 @@
         }
       }
     }
-	,"/rfid/ws/afficheAllRfid.php": 
+	,
+	"/rfid/ws/afficheRfidByIdDevice.php": 
+    {
+      "get": 
+      {
+        "tags": 
+        [
+          "afficheRfidByIdDevice"
+        ],
+
+        "summary": "Recuperation de tous les rfid",
+        "description": "Web service de recuperation de tous les rfid, y compris les informations nom_interne et tous les couples cle, libelle, valeur.",
+        "produces": 
+        [
+          "application/json"
+        ],
+
+        "deprecated": false,
+        "parameters": 
+        [
+			{
+            "name": "idDevice",
+            "in": "query",
+            "description": "L'id du device.",
+            "required": true,
+            "type": "string",
+            "default": ""
+          },
+		  {
+            "name": "affiche_emetteur",
+            "in": "query",
+            "description": "Filtrage pour l'emetteur (afficher que les parametres emetteurs, 0 ou 1)...",
+            "required": false,
+            "type": "integer",
+            "default": ""
+          },
+		  {
+            "name": "affiche_client",
+            "in": "query",
+            "description": "Filtrage pour le client (afficher que les parametres clients, 0 ou 1)...",
+            "required": false,
+            "type": "integer",
+            "default": ""
+          }
+        ],
+        "responses": 
+        {
+          "200": 
+          {
+            "description": "Resultat...",
+            "schema": 
+            {
+				"type": "object",
+				"properties": {
+					"code": {
+						"type": "string"
+					},
+					"libelle": {
+						"type": "string"
+					},
+					"rfid": {
+						"type": "array",
+						"items" :{
+							"type" : "object",
+							"properties": {
+								"id" :{
+									"type" : "string"
+								},
+								"nom_interne" :{
+									"type" : "string"
+								},
+								"date_creation" :{
+									"type" : "string"
+								},
+								"date_reception" :{
+									"type" : "string"
+								},
+								"date_lecture_notification" :{
+									"type" : "string"
+								},
+								"id_device" :{
+									"type" : "string"
+								},
+								"fields":{
+									"type": "array",
+									"items" :{
+										"type" : "object",
+										"properties": {
+											"cle_params": {
+												"type" : "string"
+											},
+											"libelle_params": {
+												"type" : "string"
+											},
+											"valeur": {
+												"type" : "string"
+											},
+											"affiche_emetteur": {
+												"type" : "integer"
+											},
+											"affiche_client": {
+												"type" : "integer"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+            }
+          }
+        }
+      }
+    }
+	,
+	"/rfid/ws/afficheAllRfid.php": 
     {
       "get": 
       {
