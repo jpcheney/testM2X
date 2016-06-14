@@ -150,6 +150,10 @@ function refreshListe(){
 				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Code</div>";
 				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Nom interne</div>";
 				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Textes</div>";
+				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Date Creation</div>";
+				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Date Reception</div>";
+				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Date Lecture Notification</div>";
+				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Id du device de reception</div>";
 				retour = retour + "</div>";
 				for(var i=0;i<jsonResponse.rfid.length;i=i+1){
 					retour = retour + "<div style=\"display:table-row;\">";
@@ -162,6 +166,10 @@ function refreshListe(){
 					}
 					retour = retour + "</div>";
 					
+					retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">"+jsonResponse.rfid[i].date_creation+"</div>";
+					retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">"+jsonResponse.rfid[i].date_reception+"</div>";
+					retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">"+jsonResponse.rfid[i].date_lecture_notification+"</div>";
+					retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">"+jsonResponse.rfid[i].id_device+"</div>";
 					retour = retour + "</div>";
 				}
 				
