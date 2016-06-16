@@ -61,6 +61,16 @@ function annuler(){
 	rempliTableau();
 }
 
+function deleteRfid(id){
+	if(confirm("Etes vous sur de vouloir supprimer le rfid d'id "+id+" ?")){
+		var xhr = new XMLHttpRequest();
+		xhr.open( "POST", "../rfid/ws/deleteRfid.php",  false);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhr.send("id="+id);
+		refreshListe();
+	}
+}
+
 function valider(){
 	var rfid = window.document.formulaire.rfid.value;
 	var nom_interne = window.document.formulaire.nom_interne.value;
@@ -153,6 +163,7 @@ function refreshListe(){
 				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Date Reception</div>";
 				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Date Lecture Notification</div>";
 				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Id du device de reception</div>";
+				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Delete</div>";
 				retour = retour + "</div>";
 				for(var i=0;i<jsonResponse.rfid.length;i=i+1){
 					retour = retour + "<div style=\"display:table-row;\">";
@@ -169,6 +180,7 @@ function refreshListe(){
 					retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">"+jsonResponse.rfid[i].date_reception+"</div>";
 					retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">"+jsonResponse.rfid[i].date_lecture_notification+"</div>";
 					retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">"+jsonResponse.rfid[i].id_device+"</div>";
+					retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\"><a href=\"#\" onclick=\"deleteRfid('"+jsonResponse.rfid[i].id+"');\">Suppression</a></div>";
 					retour = retour + "</div>";
 				}
 				

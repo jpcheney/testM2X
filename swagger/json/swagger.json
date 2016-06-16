@@ -41,7 +41,12 @@
 	,
 	{
       "name": "insertRfid",
-      "description": "Web service creation de rfid"
+      "description": "Web service de creation de rfid"
+    }
+	,
+	{
+      "name": "deleteRfid",
+      "description": "Web service de suppression de rfid"
     }
 	,
 	{
@@ -380,6 +385,56 @@
             "name": "affiche_client",
             "in": "formData",
             "description": "Si on veut afficher ce parametre coté client (recepteur), on met 1 sinon 0), separees par un ;",
+            "required": true,
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": 
+        {
+          "200": 
+          {
+            "description": "Resultat...",
+            "schema": 
+            {
+				"type": "object",
+				"properties": {
+					"code": {
+						"type": "string"
+					},
+					"libelle": {
+						"type": "string"
+					}
+				}
+            }
+          }
+        }
+      }
+    }
+	,
+	"/rfid/ws/deleteRfid.php": 
+    {
+      "post": 
+      {
+        "tags": 
+        [
+          "deleteRfid"
+        ],
+
+        "summary": "Suppression de rfid ",
+        "description": "Web service de suppression de rfid",
+        "produces": 
+        [
+          "application/json"
+        ],
+
+        "deprecated": false,
+        "parameters": 
+        [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "L'id du rfid",
             "required": true,
             "type": "string",
             "default": ""
