@@ -42,7 +42,24 @@ if(strlen($id)==0){
 	exit;
 }
 
-$sql = "UPDATE rfid SET date_lecture_notification=NOW() where id='".$id."';";
+$longitude= "";
+if(isset($_POST['longitude'])){
+	$longitude = $_POST['longitude'];
+}
+
+$latitude= "";
+if(isset($_POST['latitude'])){
+	$latitude = $_POST['latitude'];
+}
+
+$sql = "UPDATE rfid SET date_lecture_notification=NOW()";
+if($longitude!=""){
+	$sql = $sql . ",longitude=".$longitude;
+}
+if($latitude!=""){
+	$sql = $sql . ",latitude=".$latitude;
+}
+$sql = $sql . " where id='".$id."';";
 
 if (!$resultat = $connection->query($sql)) {
 ?>

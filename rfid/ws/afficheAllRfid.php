@@ -24,7 +24,7 @@ if ($connection->connect_errno) {
 	exit;
 }
 
-$sql = "select id,nom_interne,DATE_FORMAT(date_creation,'%d/%m/%Y %H:%i:%s') as date_creation,DATE_FORMAT(date_reception,'%d/%m/%Y %H:%i:%s') as date_reception,DATE_FORMAT(date_lecture_notification,'%d/%m/%Y %H:%i:%s') as date_lecture_notification,id_device AS id_device from rfid;";
+$sql = "select id,nom_interne,longitude,latitude,DATE_FORMAT(date_creation,'%d/%m/%Y %H:%i:%s') as date_creation,DATE_FORMAT(date_reception,'%d/%m/%Y %H:%i:%s') as date_reception,DATE_FORMAT(date_lecture_notification,'%d/%m/%Y %H:%i:%s') as date_lecture_notification,id_device AS id_device from rfid;";
 
 if (!$result_set = $connection->query($sql)) {
 ?>
@@ -60,6 +60,8 @@ while ($ligneRfid = $result_set->fetch_assoc()) {
 			"date_reception" : "<?php echo $ligneRfid['date_reception'];?>",
 			"date_lecture_notification" : "<?php echo $ligneRfid['date_lecture_notification'];?>",
 			"id_device" : "<?php echo $ligneRfid['id_device'];?>",
+			"longitude" : "<?php echo $ligneRfid['longitude'];?>",
+			"latitude" : "<?php echo $ligneRfid['latitude'];?>",
 			"fields" : [
 <?php
 $sql = "select rfid_infos.cle_params as cle_params,params.libelle as libelle_params,rfid_infos.valeur as valeur,rfid_infos.affichage_emetteur AS affiche_emetteur,rfid_infos.affichage_recepteur AS affiche_client from rfid_infos,params where rfid_infos.id_rfid='".$id."' and params.cle = rfid_infos.cle_params";

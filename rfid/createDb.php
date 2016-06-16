@@ -75,7 +75,9 @@ $sql = "CREATE TABLE IF NOT EXISTS rfid (".
 	"date_creation datetime NOT NULL,".
 	"date_reception datetime NOT NULL,".
 	"date_lecture_notification datetime NOT NULL,".
-	"id_device varchar(255) NOT NULL".
+	"id_device varchar(255) NOT NULL,".
+	"longitude FLOAT NOT NULL ,".
+	"latitude FLOAT NOT NULL ".
 	") ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 if (!$result = $connection->query($sql)) {
 	echo "Error: Our query failed to execute and here is why: \n";

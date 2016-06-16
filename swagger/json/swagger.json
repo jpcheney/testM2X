@@ -21,7 +21,7 @@
     "http"
   ],
 
-  "basePath": "/",
+  "basePath": "/testm2x/",
   "tags": 
   [
     {
@@ -71,7 +71,12 @@
 	,
 	{
       "name": "afficheRfidByIdDevice",
-      "description": "Web service de recuperation d'un rfid"
+      "description": "Web service de recuperation de rfid"
+    }
+	,
+	{
+      "name": "afficheRfidByIdCleParams",
+      "description": "Web service de recuperation de rfid"
     }
 	,
 	{
@@ -546,6 +551,26 @@
             "type": "string",
             "default": ""
           }
+		  ,
+		  {
+            "name": "longitude",
+            "in": "formData",
+            "description": "La longitude du portable du client",
+            "required": false,
+            "type": "number",
+			"format": "float",
+            "default": ""
+          }
+		  ,
+		  {
+            "name": "latitude",
+            "in": "formData",
+            "description": "La latitude du portable du client",
+            "required": false,
+            "type": "number",
+			"format": "float",
+            "default": ""
+          }
         ],
         "responses": 
         {
@@ -663,6 +688,124 @@
             "type": "integer",
             "default": ""
           },
+		  {
+            "name": "affiche_client",
+            "in": "query",
+            "description": "Filtrage pour le client (afficher que les parametres clients, 0 ou 1)...",
+            "required": false,
+            "type": "integer",
+            "default": ""
+          }
+        ],
+        "responses": 
+        {
+          "200": 
+          {
+            "description": "Resultat...",
+            "schema": 
+            {
+				"type": "object",
+				"properties": {
+					"code": {
+						"type": "string"
+					},
+					"libelle": {
+						"type": "string"
+					},
+					"rfid": {
+						"type": "object",
+						"properties": {
+							"id" :{
+								"type" : "string"
+							},
+							"nom_interne" :{
+								"type" : "string"
+							},
+							"date_creation" :{
+								"type" : "string"
+							},
+							"date_reception" :{
+								"type" : "string"
+							},
+							"date_lecture_notification" :{
+								"type" : "string"
+							},
+							"id_device" :{
+								"type" : "string"
+							},
+							"fields":{
+								"type": "array",
+								"items" :{
+									"type" : "object",
+									"properties": {
+										"cle_params": {
+											"type" : "string"
+										},
+										"libelle_params": {
+											"type" : "string"
+										},
+										"valeur": {
+											"type" : "string"
+										}
+									}
+								}
+							}
+						}
+						
+					}
+				}
+            }
+          }
+        }
+      }
+    }
+	,
+	"/rfid/ws/afficheRfidByIdCleParams.php": 
+    {
+      "get": 
+      {
+        "tags": 
+        [
+          "afficheRfidByIdCleParams"
+        ],
+
+        "summary": "Recuperation des informations postees pour des rfid",
+        "description": "Web service de recuperation des informations de rfid ayant la meme proporete, c'est a dire, la meme cle params (NOM_PRODUIT par exemple) et la meme valeur de params.",
+        "produces": 
+        [
+          "application/json"
+        ],
+
+        "deprecated": false,
+        "parameters": 
+        [
+          {
+            "name": "cleParams",
+            "in": "query",
+            "description": "cleParams du rfid.",
+            "required": true,
+            "type": "string",
+            "default": ""
+          }
+		  ,
+		  {
+            "name": "valeur",
+            "in": "query",
+            "description": "Valeur de la cle params",
+            "required": true,
+            "type": "integer",
+            "default": ""
+          }
+		  ,
+		  {
+            "name": "valeur",
+            "in": "query",
+            "description": "Filtrage pour l'emetteur (afficher que les parametres emetteurs, 0 ou 1)...",
+            "required": false,
+            "type": "integer",
+            "default": ""
+          }
+		  ,
 		  {
             "name": "affiche_client",
             "in": "query",

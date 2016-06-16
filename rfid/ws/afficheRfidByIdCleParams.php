@@ -2,15 +2,54 @@
 header("Content-Type:text/plain");
 include_once('../conf/connection.php');
 
-$idDevice= "";
-if(isset($_GET['idDevice'])){
-	$idDevice = $_GET['idDevice'];
+$cleParams= "";
+if(isset($_GET['cleParams'])){
+	$cleParams = $_GET['cleParams'];
 }else{
 ?>
 {
 	"reponse" : {
 		"code" : "KO",
-		"libelle" : "Il manque le parametre idDevice"
+		"libelle" : "Il manque le parametre cleParams"
+	}
+}
+<?php
+	exit;
+}
+
+if(strlen($cleParams)==0){
+?>
+{
+	"reponse" : {
+		"code" : "KO",
+		"libelle" : "Le parametre cleParams est vide"
+	}
+}
+<?php
+	exit;
+}
+
+$valeur= "";
+if(isset($_GET['valeur'])){
+	$valeur = $_GET['valeur'];
+}else{
+?>
+{
+	"reponse" : {
+		"code" : "KO",
+		"libelle" : "Il manque le parametre valeur"
+	}
+}
+<?php
+	exit;
+}
+
+if(strlen($valeur)==0){
+?>
+{
+	"reponse" : {
+		"code" : "KO",
+		"libelle" : "Le parametre valeur est vide"
 	}
 }
 <?php
@@ -27,18 +66,6 @@ if(isset($_GET['affiche_client'])){
 	$affiche_client = $_GET['affiche_client'];
 }
 
-if(strlen($idDevice)==0){
-?>
-{
-	"reponse" : {
-		"code" : "KO",
-		"libelle" : "Le parametre idDevice est vide"
-	}
-}
-<?php
-	exit;
-}
-
 if ($connection->connect_errno) {
 ?>
 {
@@ -51,7 +78,7 @@ if ($connection->connect_errno) {
 	exit;
 }
 
-$sql = "select id,nom_interne,longitude,latitude,DATE_FORMAT(date_creation,'%d/%m/%Y %H:%i:%s') as date_creation,DATE_FORMAT(date_reception,'%d/%m/%Y %H:%i:%s') as date_reception,DATE_FORMAT(date_lecture_notification,'%d/%m/%Y %H:%i:%s') as date_lecture_notification,id_device AS id_device from rfid where id_device='".$idDevice."';";
+$sql = "select distinct rfid.id as id,rfid.nom_interne as nom_interne,rfid.longitude as longitude,rfid.latitude as latitude,DATE_FORMAT(rfid.date_creation,'%d/%m/%Y %H:%i:%s') as date_creation,DATE_FORMAT(rfid.date_reception,'%d/%m/%Y %H:%i:%s') as date_reception,DATE_FORMAT(rfid.date_lecture_notification,'%d/%m/%Y %H:%i:%s') as date_lecture_notification,rfid.id_device AS id_device from rfid,rfid_infos where rfid.id=rfid_infos.id_rfid and cle_params='".$cleParams."' and valeur='".$valeur."';";
 
 if (!$result_set = $connection->query($sql)) {
 ?>

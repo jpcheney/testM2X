@@ -163,6 +163,7 @@ function refreshListe(){
 				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Date Reception</div>";
 				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Date Lecture Notification</div>";
 				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Id du device de reception</div>";
+				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Longitude/Latitude</div>";
 				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Delete</div>";
 				retour = retour + "</div>";
 				for(var i=0;i<jsonResponse.rfid.length;i=i+1){
@@ -180,6 +181,7 @@ function refreshListe(){
 					retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">"+jsonResponse.rfid[i].date_reception+"</div>";
 					retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">"+jsonResponse.rfid[i].date_lecture_notification+"</div>";
 					retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">"+jsonResponse.rfid[i].id_device+"</div>";
+					retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">"+jsonResponse.rfid[i].longitude+"/"+jsonResponse.rfid[i].latitude+"</div>";
 					retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\"><a href=\"#\" onclick=\"deleteRfid('"+jsonResponse.rfid[i].id+"');\">Suppression</a></div>";
 					retour = retour + "</div>";
 				}
