@@ -153,8 +153,8 @@ function refreshListe(){
 				var jsonResponse = eval('('+xhr.responseText+')');
 				var retour = "";
 				
-				retour = retour + "<h1>Liste des RFID</h1>";
-				retour = retour + "<div style=\"display:table;\">";
+				retour = retour + "<h1 style=\"text-align:center;margin:0 auto;\">Liste des RFID</h1>";
+				retour = retour + "<div style=\"display:table;margin:0 auto;width:100%;\">";
 				retour = retour + "<div style=\"display:table-row;\">";
 				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Code</div>";
 				retour = retour + "<div style=\"display:table-cell;border-style:solid;border-width:thin;\">Nom interne</div>";
@@ -202,10 +202,11 @@ function refreshListe(){
 		<div id="main-content" style="text-align:center;">
 			<h1>Interface Createur</h1>
 			<form name="formulaire">
-				<div id="divFormulaire" style="display:table;">
+				<div id="divFormulaire" style="display:table;margin:0 auto;">
 				</div>
 			</form>
 		</div>
+		<br/><br/><br/><br/><br/>
 		<div id="listeRfid">
 		</div>
 		<form name="realFormulaire" action="../rfid/ws/insertRfid.php" method="POST">
