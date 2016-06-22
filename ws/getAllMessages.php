@@ -41,7 +41,7 @@ if(isset($_GET['streamId']) && !empty($_GET['streamId'])){
 	}
 }
 
-if($error==0){
+
 
 
 
@@ -57,8 +57,14 @@ if($error==0){
 	//get the values
 	$values = $stream->values();
 	
+	if(!isset($values['values'])){
+		$error = 1;
+		$msgError = $msgError . "Le stream '".$streamId."' n'existe pas..";
+	}
+	
+if($error==0){
 	$valuesArray = $values['values'];
-//var_dump($valuesArray);
+
 ?>
 {
 	"reponse" : {
