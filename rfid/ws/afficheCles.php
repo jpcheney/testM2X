@@ -1,5 +1,5 @@
 <?php
-header("Content-Type:text/plain");
+header('Content-type: application/json');
 include_once('../conf/connection.php');
 
 if ($connection->connect_errno) {

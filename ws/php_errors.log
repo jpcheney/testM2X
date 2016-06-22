@@ -1,0 +1,105 @@
+[22-Jun-2016 14:26:08 Europe/Paris] PHP Warning:  Unknown: open_basedir restriction in effect. File(C:\Developpements\stages\test_heroku\testM2X\ws\getAllMessages.php) is not within the allowed path(s): (C:/Divers_JPC/jpconline/) in Unknown on line 0
+[22-Jun-2016 14:26:08 Europe/Paris] PHP Warning:  Unknown: failed to open stream: Operation not permitted in Unknown on line 0
+[22-Jun-2016 14:26:08 Europe/Paris] PHP Fatal error:  Unknown: Failed opening required 'C:/Developpements/stages/test_heroku/testM2X/ws/getAllMessages.php' (include_path='.;C:\php\pear') in Unknown on line 0
+[22-Jun-2016 14:26:40 Europe/Paris] PHP Notice:  Undefined variable: streamId in C:\Developpements\stages\test_heroku\testM2X\ws\getAllMessages.php on line 55
+[22-Jun-2016 14:26:44 Europe/Paris] PHP Notice:  Undefined variable: streamId in C:\Developpements\stages\test_heroku\testM2X\ws\getAllMessages.php on line 62
+[22-Jun-2016 15:05:43 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'Curl Error: Could not resolve host: api-m2x.att.com' in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php:92
+Stack trace:
+#0 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php(29): Att\M2X\HttpRequest->request('GET', 'https://api-m2x...', Array)
+#1 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(234): Att\M2X\HttpRequest->get('https://api-m2x...', Array)
+#2 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\Resource.php(71): Att\M2X\M2X->get('/devices/434b72...')
+#3 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(197): Att\M2X\Resource::get(Object(Att\M2X\M2X), '434b72300bad423...')
+#4 C:\Developpements\stages\test_heroku\testM2X\ws\getAllMessages.php(52): Att\M2X\M2X->device('434b72300bad423...')
+#5 {main}
+  thrown in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 92
+[22-Jun-2016 15:10:55 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'Curl Error: Could not resolve host: api-m2x.att.com' in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php:92
+Stack trace:
+#0 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php(29): Att\M2X\HttpRequest->request('GET', 'https://api-m2x...', Array)
+#1 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(234): Att\M2X\HttpRequest->get('https://api-m2x...', Array)
+#2 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\Resource.php(71): Att\M2X\M2X->get('/devices/434b72...')
+#3 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(197): Att\M2X\Resource::get(Object(Att\M2X\M2X), '434b72300bad423...')
+#4 C:\Developpements\stages\test_heroku\testM2X\ws\getAllMessages.php(52): Att\M2X\M2X->device('434b72300bad423...')
+#5 {main}
+  thrown in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 92
+[22-Jun-2016 15:14:00 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'Curl Error: Could not resolve host: api-m2x.att.com' in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php:92
+Stack trace:
+#0 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php(29): Att\M2X\HttpRequest->request('GET', 'https://api-m2x...', Array)
+#1 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(234): Att\M2X\HttpRequest->get('https://api-m2x...', Array)
+#2 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\Resource.php(71): Att\M2X\M2X->get('/devices/434b72...')
+#3 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(197): Att\M2X\Resource::get(Object(Att\M2X\M2X), '434b72300bad423...')
+#4 C:\Developpements\stages\test_heroku\testM2X\ws\getAllMessages.php(52): Att\M2X\M2X->device('434b72300bad423...')
+#5 {main}
+  thrown in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 92
+[22-Jun-2016 15:43:50 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'Curl Error: SSL certificate problem: unable to get local issuer certificate' in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php:92
+Stack trace:
+#0 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php(29): Att\M2X\HttpRequest->request('GET', 'https://api-m2x...', Array)
+#1 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(234): Att\M2X\HttpRequest->get('https://api-m2x...', Array)
+#2 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\Resource.php(71): Att\M2X\M2X->get('/devices/434b72...')
+#3 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(197): Att\M2X\Resource::get(Object(Att\M2X\M2X), '434b72300bad423...')
+#4 C:\Developpements\stages\test_heroku\testM2X\ws\getAllMessages.php(52): Att\M2X\M2X->device('434b72300bad423...')
+#5 {main}
+  thrown in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 92
+[22-Jun-2016 15:47:26 Europe/Paris] PHP Notice:  Undefined property: Att\M2X\HttpRequest::$ch in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 84
+[22-Jun-2016 15:47:26 Europe/Paris] PHP Warning:  curl_setopt() expects parameter 1 to be resource, null given in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 84
+[22-Jun-2016 15:47:26 Europe/Paris] PHP Notice:  Undefined property: Att\M2X\HttpRequest::$ch in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 85
+[22-Jun-2016 15:47:26 Europe/Paris] PHP Warning:  curl_setopt() expects parameter 1 to be resource, null given in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 85
+[22-Jun-2016 15:47:27 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'Curl Error: SSL certificate problem: unable to get local issuer certificate' in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php:94
+Stack trace:
+#0 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php(29): Att\M2X\HttpRequest->request('GET', 'https://api-m2x...', Array)
+#1 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(234): Att\M2X\HttpRequest->get('https://api-m2x...', Array)
+#2 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\Resource.php(71): Att\M2X\M2X->get('/devices/434b72...')
+#3 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(197): Att\M2X\Resource::get(Object(Att\M2X\M2X), '434b72300bad423...')
+#4 C:\Developpements\stages\test_heroku\testM2X\ws\getAllMessages.php(52): Att\M2X\M2X->device('434b72300bad423...')
+#5 {main}
+  thrown in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 94
+[22-Jun-2016 15:48:04 Europe/Paris] PHP Warning:  curl_setopt() expects parameter 1 to be resource, null given in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 84
+[22-Jun-2016 15:48:04 Europe/Paris] PHP Warning:  curl_setopt() expects parameter 1 to be resource, null given in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 85
+[22-Jun-2016 15:48:05 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'Curl Error: SSL certificate problem: unable to get local issuer certificate' in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php:94
+Stack trace:
+#0 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php(29): Att\M2X\HttpRequest->request('GET', 'https://api-m2x...', Array)
+#1 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(234): Att\M2X\HttpRequest->get('https://api-m2x...', Array)
+#2 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\Resource.php(71): Att\M2X\M2X->get('/devices/434b72...')
+#3 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(197): Att\M2X\Resource::get(Object(Att\M2X\M2X), '434b72300bad423...')
+#4 C:\Developpements\stages\test_heroku\testM2X\ws\getAllMessages.php(52): Att\M2X\M2X->device('434b72300bad423...')
+#5 {main}
+  thrown in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 94
+[22-Jun-2016 16:01:07 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'Curl Error: SSL certificate problem: unable to get local issuer certificate' in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php:98
+Stack trace:
+#0 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php(29): Att\M2X\HttpRequest->request('GET', 'https://api-m2x...', Array)
+#1 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(234): Att\M2X\HttpRequest->get('https://api-m2x...', Array)
+#2 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\Resource.php(71): Att\M2X\M2X->get('/devices/434b72...')
+#3 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(197): Att\M2X\Resource::get(Object(Att\M2X\M2X), '434b72300bad423...')
+#4 C:\Developpements\stages\test_heroku\testM2X\ws\getAllMessages.php(52): Att\M2X\M2X->device('434b72300bad423...')
+#5 {main}
+  thrown in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 98
+[22-Jun-2016 16:35:39 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'Curl Error: SSL certificate problem: unable to get local issuer certificate' in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php:99
+Stack trace:
+#0 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php(29): Att\M2X\HttpRequest->request('GET', 'https://api-m2x...', Array)
+#1 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(234): Att\M2X\HttpRequest->get('https://api-m2x...', Array)
+#2 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\Resource.php(71): Att\M2X\M2X->get('/devices/434b72...')
+#3 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(197): Att\M2X\Resource::get(Object(Att\M2X\M2X), '434b72300bad423...')
+#4 C:\Developpements\stages\test_heroku\testM2X\ws\getAllMessages.php(52): Att\M2X\M2X->device('434b72300bad423...')
+#5 {main}
+  thrown in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 99
+[22-Jun-2016 16:35:47 Europe/Paris] PHP Parse error:  syntax error, unexpected ':' in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 86
+[22-Jun-2016 16:36:01 Europe/Paris] PHP Parse error:  syntax error, unexpected ':' in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 86
+[22-Jun-2016 16:36:02 Europe/Paris] PHP Parse error:  syntax error, unexpected ':' in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 86
+[22-Jun-2016 16:36:13 Europe/Paris] PHP Warning:  curl_setopt() expects exactly 3 parameters, 4 given in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 86
+[22-Jun-2016 16:36:13 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'Curl Error: SSL certificate problem: unable to get local issuer certificate' in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php:99
+Stack trace:
+#0 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php(29): Att\M2X\HttpRequest->request('GET', 'https://api-m2x...', Array)
+#1 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(234): Att\M2X\HttpRequest->get('https://api-m2x...', Array)
+#2 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\Resource.php(71): Att\M2X\M2X->get('/devices/434b72...')
+#3 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(197): Att\M2X\Resource::get(Object(Att\M2X\M2X), '434b72300bad423...')
+#4 C:\Developpements\stages\test_heroku\testM2X\ws\getAllMessages.php(52): Att\M2X\M2X->device('434b72300bad423...')
+#5 {main}
+  thrown in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 99
+[22-Jun-2016 16:36:45 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'Curl Error: SSL certificate problem: unable to get local issuer certificate' in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php:102
+Stack trace:
+#0 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php(29): Att\M2X\HttpRequest->request('GET', 'https://api-m2x...', Array)
+#1 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(234): Att\M2X\HttpRequest->get('https://api-m2x...', Array)
+#2 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\Resource.php(71): Att\M2X\M2X->get('/devices/434b72...')
+#3 C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\M2X.php(197): Att\M2X\Resource::get(Object(Att\M2X\M2X), '434b72300bad423...')
+#4 C:\Developpements\stages\test_heroku\testM2X\ws\getAllMessages.php(52): Att\M2X\M2X->device('434b72300bad423...')
+#5 {main}
+  thrown in C:\Developpements\stages\test_heroku\testM2X\vendor\attm2x\m2x-php\src\HttpRequest.php on line 102

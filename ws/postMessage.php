@@ -1,6 +1,7 @@
 <?php
 //chargement de la librairie via l'autoload de composer
 require_once "../vendor/autoload.php";
+header('Content-type: application/json');
 
 //declaration des objets
 use Att\M2X\M2X;

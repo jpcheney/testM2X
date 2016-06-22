@@ -1,6 +1,7 @@
 <?php
 //chargement de la librairie via l'autoload de composer
 require_once "../vendor/autoload.php";
+header('Content-type: application/json');
 
 //declaration des objets
 use Att\M2X\M2X;
@@ -43,23 +44,24 @@ if(isset($_GET['streamId']) && !empty($_GET['streamId'])){
 
 
 
+	if($error==0){
 
+		//instanciation de l'objet
+		$m2x = new M2X($apiKey);
 
-	//instanciation de l'objet
-	$m2x = new M2X($apiKey);
+		//Get the device
+		$device = $m2x->device($deviceId);
 
-	//Get the device
-	$device = $m2x->device($deviceId);
+		//get the stream
+		$stream = $device->stream($streamId);
 
-	//get the stream
-	$stream = $device->stream($streamId);
-
-	//get the values
-	$values = $stream->values();
-	
-	if(!isset($values['values'])){
-		$error = 1;
-		$msgError = $msgError . "Le stream '".$streamId."' n'existe pas..";
+		//get the values
+		$values = $stream->values();
+		
+		if(!isset($values['values'])){
+			$error = 1;
+			$msgError = $msgError . "Le stream '".$streamId."' n'existe pas..";
+		}
 	}
 	
 if($error==0){
